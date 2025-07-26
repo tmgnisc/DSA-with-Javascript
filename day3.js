@@ -14,14 +14,30 @@ const isAnagram = function(s, t){
     return s === t
 }
 
-//second solution
-const isAnagramV2 = function(s,t){
-    if(s.length !== t.length) return false
-    let obj1 = {}
-    let obj2 = {}
-
-    for (let i = 0; i < s.length; i ++){
-obj1[s[i]] = 1
-obj1[]
+//second solution/**
+//  * Determines if two strings are anagrams of each other.
+//  * An anagram uses all original letters exactly once.
+//  * @param {string} s - First input string
+//  * @param {string} t - Second input string
+//  * @returns {boolean} - True if anagrams, false otherwise
+//  */
+const isAnagramV2 = function(s, t) {
+    if (typeof s !== 'string' || typeof t !== 'string' || s.length !== t.length) {
+        return false;
     }
-}
+
+    const charMap = {};
+
+    for (let i = 0; i < s.length; i++) {
+        charMap[s[i]] = (charMap[s[i]] || 0) + 1;
+        charMap[t[i]] = (charMap[t[i]] || 0) - 1;
+    }
+
+    return Object.values(charMap).every(count => count === 0);
+};
+
+// Example usage:
+console.log(isAnagramV2("anagram", "nagaram")); // true
+console.log(isAnagramV2("rat", "car")); // false
+console.log(isAnagramV2("", "")); // true
+console.log(isAnagramV2("a", "ab")); // false
