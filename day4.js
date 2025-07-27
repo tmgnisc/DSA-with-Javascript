@@ -8,3 +8,7 @@
 //output:[1,2]
 
 
+//first solution
+const twoSum = function(nums, target){
+    
+}
