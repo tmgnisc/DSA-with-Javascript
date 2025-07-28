@@ -8,3 +8,18 @@
 //input: price = [7,1,5,3,6,4] ------>>>>> output: 5
 //input: price = [7,6,4,3,1] -------->>>>> output: 0
 
+function maxProfit(prices){
+    let globalProfit = 0
+    for(let i = 0; i<prices.length-1; i++){
+        for(let j = i +1; j<prices.length-1; j++){
+            const currentProfit = prices[j] - prices[i]
+            if(currentProfit>globalProfit){
+                globalProfit = currentProfit
+            }
+        }
+    }
+    return globalProfit
+
+}
+
+console.log(maxProfit([7,1,5,3,6,4]))
